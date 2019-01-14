@@ -1,0 +1,40 @@
+entity Project {
+	name String required,
+    description String,
+    priority Short
+}
+entity Person {
+    name String required,
+    location Location,
+    type EmployeeType,
+    hasBandwidth Boolean
+}
+enum Location {
+	SAN_RAMON,
+    TEMPE,
+    CHENNAI
+}
+
+enum EmployeeType {
+	CONTRACTOR,
+    EMPLOYEE
+}
+
+entity Skill {
+	name String required
+}
+
+enum ExpertiseLevel {
+	BEGINNER, WORKING_KNOWLEGE, EXPERT
+}
+
+relationship ManyToMany {
+	Person to Skill
+}
+relationship ManyToMany {
+	Person to Project
+}
+
+
+// Set pagination options
+paginate Person, Project, Skill with infinite-scroll
